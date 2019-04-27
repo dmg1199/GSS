@@ -1,6 +1,6 @@
 ---
 title: "General Social Survey"
-author: "Your Name"
+author: "Dr. J"
 date: "Year 2019"
 output: 
   html_document:
@@ -26,13 +26,13 @@ mydata2 <-filter(mydata,RACE!="IAP" ) %>% droplevels()
 mydata3 <- filter(mydata2,BIGBANG=="True" | BIGBANG=="False",EVOLVED=="True"|EVOLVED=="False",POSTLIFE=="YES"|POSTLIFE=="NO",OWNGUN=="YES"|OWNGUN=="NO",COURTS=="TOO HARSH"|COURTS=="NOT HARSH ENOUGH"|COURTS=="ABOUT RIGHT") %>% droplevels()
 mydata4 <- filter(mydata3,CAPPUN=="FAVOR"|CAPPUN=="OPPOSE",VOTE12=="Voted"|VOTE12=="Did not vote",VOTE16=="Voted"|VOTE16=="Did not vote") %>% droplevels()
 levels(mydata4$VOTE12)[1] <- "voted12"
-levels(mydata4$VOTE12)[2] <- "no in 12"
+levels(mydata4$VOTE12)[2] <- "did not vote 12"
 
 ```
 
 
 ```{r}
-barchartGC(~VOTE16+VOTE12, data=mydata4, type = "percent") 
+barchartGC(~VOTE16+VOTE12, data=mydata4, type = "percent",xlab='voted in 2016') 
 chisqtestGC(~VOTE16+VOTE12, data=mydata4)
 votetab=xtabs(~VOTE16+VOTE12, data=mydata4)
 fisher.test(votetab)
@@ -43,6 +43,10 @@ fisher.test(votetab)
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
 
 This data is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 15 variables. It has further removed unwanted factor levels in much of the data. Examine that code to see what it is doing. First explain what you make out of comparing how people voted in 2012 with 2016.
+
+How are the "voted in 2016" and "voted in 2012" related?  
+$H_0:$ voting in 2016 and 2012 are unrlated
+
 
 
 ## Methods
