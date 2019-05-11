@@ -30,6 +30,10 @@ levels(mydata4$VOTE12)[2] <- "did not vote 12"
 
 ```
 
+the null hypothesis is 
+
+$H_0$ : there is no relationship between voting in 2012 and voting in 2016
+
 
 ```{r}
 barchartGC(~VOTE16+VOTE12, data=mydata4, type = "percent",xlab='voted in 2016') 
